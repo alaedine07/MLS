@@ -8,7 +8,7 @@ My simple implementation of the Linux `ls` command. Part of a School project
 
 `hls.h`: header file contains function definitions
 
-`hls.c`: Contains main functions
+`mls.c`: Contains main functions
 
 `files.c`: contains functions to operate on argument files
 
