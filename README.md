@@ -3,9 +3,13 @@ My simple implementation of the Linux `ls` command. Part of a School project
 
 ## Files:
 `error.c`: handle displayed errors
+
 `memory.c`: handle freeing memory operations
+
 `hls.h`: header file contains function definitions
+
 `hls.c`: Contains main functions
+
 `files.c`: contains functions to operate on argument files
 
 ## Allowed functions and system calls:
