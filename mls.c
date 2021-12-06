@@ -1,13 +1,18 @@
 #include "hls.h"
-
+/**
+ * get_filename - retrieve the full file path from directory
+ * @d_name: filename
+ * @directory_name: name of the directory
+ * Return: full path
+ */
 char *get_filename(char *d_name, char *directory_name)
 {
-	int i,j;
+	int i, j;
 	size_t l1 = strlen(d_name);
 	size_t l2 = strlen(directory_name);
-
 	char *filename = malloc((l1 + l2) * sizeof(char));
-	memset(filename, '0', l1+l2);
+
+	memset(filename, '0', l1 + l2);
 	for (i = 0; directory_name[i]; i++)
 	{
 		filename[i] = directory_name[i];
@@ -61,7 +66,6 @@ size_t	open_directory(char *options, char *directory_name)
 	while ((read = readdir(dir)) != NULL)
 	{
 		printf("file is : %s\n", read->d_name);
-		// filename = get_filename(read->d_name, directory_name);
 		/* printf("filename is: %s\n", filename); */
 		if (include_hidden_files)
 			add_standard(&head, read->d_name, options);

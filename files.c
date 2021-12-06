@@ -41,22 +41,30 @@ size_t _list(char **files, char *options)
 	}
 	return (ret);
 }
-
+/**
+ * print_permessions - extract permessions from file
+ * @head: head of linked list containing the files
+ * Return: void
+ */
 void print_permessions(list_f *head)
 {
-	printf( (S_ISDIR(head->file_stat.st_mode)) ? "d" : "-");
-    printf( (head->file_stat.st_mode & S_IRUSR) ? "r" : "-");
-    printf( (head->file_stat.st_mode & S_IWUSR) ? "w" : "-");
-    printf( (head->file_stat.st_mode & S_IXUSR) ? "x" : "-");
-    printf( (head->file_stat.st_mode & S_IRGRP) ? "r" : "-");
-    printf( (head->file_stat.st_mode & S_IWGRP) ? "w" : "-");
-    printf( (head->file_stat.st_mode & S_IXGRP) ? "x" : "-");
-    printf( (head->file_stat.st_mode & S_IROTH) ? "r" : "-");
-    printf( (head->file_stat.st_mode & S_IWOTH) ? "w" : "-");
-    printf( (head->file_stat.st_mode & S_IXOTH) ? "x" : "-");
+	printf((S_ISDIR(head->file_stat.st_mode)) ? "d" : "-");
+	printf((head->file_stat.st_mode & S_IRUSR) ? "r" : "-");
+	printf((head->file_stat.st_mode & S_IWUSR) ? "w" : "-");
+	printf((head->file_stat.st_mode & S_IXUSR) ? "x" : "-");
+	printf((head->file_stat.st_mode & S_IRGRP) ? "r" : "-");
+	printf((head->file_stat.st_mode & S_IWGRP) ? "w" : "-");
+	printf((head->file_stat.st_mode & S_IXGRP) ? "x" : "-");
+	printf((head->file_stat.st_mode & S_IROTH) ? "r" : "-");
+	printf((head->file_stat.st_mode & S_IWOTH) ? "w" : "-");
+	printf((head->file_stat.st_mode & S_IXOTH) ? "x" : "-");
 	printf(" ");
 }
-
+/**
+ * print_user_group - extract user and group from from file metadata
+ * @head: head of linked list containing the file
+ * Return: void
+ */
 void print_user_group(list_f *head)
 {
 	struct passwd *pw;
@@ -67,11 +75,15 @@ void print_user_group(list_f *head)
 
 	printf("%s %s\t", pw->pw_name, gr->gr_name);
 }
-
+/**
+ * print_last_modification - extract last modification from metadata
+ * @head: head of the linked list containing files
+ * Return: void
+ */
 void print_last_modification(list_f *head)
 {
-
 	char *time = ctime(&head->file_stat.st_mtime);
+
 	if (strlen(time) >= 16)
 	{
 		/* skip first bytes */
@@ -126,6 +138,7 @@ void print_files(list_f *head, char *options)
  *
  * @head: head of the linked list
  * @file_name: name of the file to add
+ * @options: string contains the options
  * Return: new node to the linked list
  */
 list_f *add_standard(list_f **head, char *file_name, char *options)
